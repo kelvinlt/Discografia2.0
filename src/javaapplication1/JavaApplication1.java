@@ -35,15 +35,26 @@ public class JavaApplication1 {
 
             switch (opcion) {
                 case 1:
+                    System.out.println("Has escogido:");
+                    System.out.println("1.Nuevo disco");
                     addDisco();
                     break;
                 case 2:
+                    System.out.println("Has escogido:");
+                    System.out.println("2.Modificar disco");
+                    System.out.println("========================");
                     modifyDisco();
                     break;
                 case 3:
+                    System.out.println("Has escogido:");
+                    System.out.println("3.Borrar disco");
+                    System.out.println("========================");
                     deleteDisco();
                     break;
                 case 4:
+                    System.out.println("Has escogido:");
+                    System.out.println("4.Mostrat disco");
+                    System.out.println("========================");
                     showDisco();
                     break;
                 case 5:
@@ -68,9 +79,6 @@ public class JavaApplication1 {
     }
 
     public static void addDisco() {
-        System.out.println("Has escogido:");
-        System.out.println("1.Nuevo disco");
-
         String titulo = pedirCadena("Titulo: ");
         String grupo = pedirCadena("Grupo: ");
         int tema = pedirEntero("Numero de temas: ");
@@ -82,27 +90,40 @@ public class JavaApplication1 {
         nuevo.setTema(tema);
         nuevo.setDuracion(duracion);
         discos.add(nuevo);
-        
+
         System.out.println("Disco añadido");
         System.out.println("========================");
     }
 
     public static void modifyDisco() {
-        System.out.println("Has escogido:");
-        System.out.println("2.Modificar disco");
-        System.out.println("========================");
+        showDisco();
+        int num = pedirEntero("Indica el numero del disco que quieres modificar:");
+        num--;
+        Disco d = discos.get(num);
+        System.out.println("Datos del disco:");
+        System.out.println(d);
+        int temas = pedirEntero("Indica el nuevo numero para tema");
+        d.setTema(temas);
+
     }
 
     public static void deleteDisco() {
-        System.out.println("Has escogido:");
-        System.out.println("3.Borrar disco");
-        System.out.println("========================");
+        showDisco();
+        int num = pedirEntero("Indica el numero del disco que quieres borrar:");
+        num--;
+        Disco d = discos.get(num);
+        System.out.println("Datos del disco:");
+        System.out.println(d);
+//remove
     }
 
     public static void showDisco() {
-        System.out.println("Has escogido:");
-        System.out.println("4.Mostrat disco");
-        System.out.println("========================");
+        int numDisco = 1;
+
+        for (Disco d : discos) {
+            System.out.println("===Disco numero : " + numDisco + " | " + d);
+            numDisco++;
+        }
     }
 
     public static int pedirEntero(String mensaje) {
@@ -154,6 +175,7 @@ public class JavaApplication1 {
             System.out.println(mensaje);
             try {
                 numero = Double.parseDouble(br.readLine());
+                error = false;
             } catch (IOException e) {
                 System.out.println("Error de entrada y salida");
             } catch (NumberFormatException ex) {
