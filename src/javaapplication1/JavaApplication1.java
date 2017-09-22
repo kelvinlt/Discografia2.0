@@ -114,6 +114,17 @@ public class JavaApplication1 {
         Disco d = discos.get(num);
         System.out.println("Datos del disco:");
         System.out.println(d);
+        
+        String seguridad = pedirCadena("Estas seguro de borrar el disco? Escribe si para seguir borrando");
+        if(seguridad.equals("si")){    
+        discos.remove(num);
+        }
+        else{
+        }
+        
+        
+
+        
 //remove
     }
 
