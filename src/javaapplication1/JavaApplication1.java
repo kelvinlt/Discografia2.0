@@ -79,7 +79,24 @@ public class JavaApplication1 {
     }
 
     public static void addDisco() {
-        String titulo = pedirCadena("Titulo: ");
+
+        Boolean igual;
+        String titulo;
+        
+        do{
+            igual = false;
+            titulo = pedirCadena("Titulo: ");
+            for (Disco d : discos) {
+                if (titulo.equals(d.getTitulo())) {
+                    System.out.println("Ya hay uno igual porfavor escribe otro titulo");
+                    igual=true;
+                }
+//                else {
+//                    igual = false;
+//                }
+            }
+        }while(igual==true);
+        
         String grupo = pedirCadena("Grupo: ");
         int tema = pedirEntero("Numero de temas: ");
         double duracion = pedirDouble("Duracion: ");
@@ -114,17 +131,13 @@ public class JavaApplication1 {
         Disco d = discos.get(num);
         System.out.println("Datos del disco:");
         System.out.println(d);
-        
-        String seguridad = pedirCadena("Estas seguro de borrar el disco? Escribe si para seguir borrando");
-        if(seguridad.equals("si")){    
-        discos.remove(num);
-        }
-        else{
-        }
-        
-        
 
-        
+        String seguridad = pedirCadena("Estas seguro de borrar el disco? Escribe si para seguir borrando");
+        if (seguridad.equals("si")) {
+            discos.remove(num);
+        } else {
+        }
+
 //remove
     }
 
