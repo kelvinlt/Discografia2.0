@@ -5,6 +5,8 @@
  */
 package javaapplication1;
 
+import java.util.Objects;
+
 /**
  *
  * @author DAM
@@ -54,6 +56,10 @@ public class Disco {
         this.titulo = titulo;
     }
 
+    public Disco(String titulo) {
+        this.titulo = titulo;
+    }
+
     public Disco() {
     }
 
@@ -65,8 +71,39 @@ public class Disco {
     }
 
     @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 83 * hash + Objects.hashCode(this.titulo);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Disco other = (Disco) obj;
+        return other.getTitulo().equalsIgnoreCase(titulo);
+    }
+
+    
+    @Override
     public String toString() {
-        return "Disco{" + "titulo=" + titulo + ", artista=" + artista + ", tema=" + tema + ", duracion=" + duracion + '}';
+        return "  Titulo:" + titulo + ", Artista:" + artista + ", Tema:" + tema + ", Duracion:" + duracion + "===";
+    }
+
+    void setTema(Object object) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void setDuracion(Object object) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     
